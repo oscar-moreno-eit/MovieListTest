@@ -1,11 +1,14 @@
 package com.example.movielisttest
 
 import android.graphics.Color
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movielisttest.model.Response
+import com.squareup.picasso.Picasso
 
-class MovieAdapter(private val dataSet: List<String>): RecyclerView.Adapter<MovieViewHolder>() {
+class MovieAdapter(private val dataSet: Response): RecyclerView.Adapter<MovieViewHolder>() {
     /**
      * Used to create the ViewHolder
      * This will be called only once
@@ -22,7 +25,10 @@ class MovieAdapter(private val dataSet: List<String>): RecyclerView.Adapter<Movi
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         if (position % 2 == 0) holder.itemView.setBackgroundColor(Color.LTGRAY)
-        holder.tvMovieTitle.text = dataSet[position]
+        holder.tvMovieTitle.text = dataSet[position].title
+        holder.ivImage.setBackgroundColor(Color.CYAN)
+        Picasso.get().load(dataSet[position].image).into(holder.ivImage);
+
     }
 
     override fun getItemCount(): Int {

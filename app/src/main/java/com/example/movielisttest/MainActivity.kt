@@ -30,17 +30,12 @@ class MainActivity : AppCompatActivity() {
                     1-> {
                         val listOfMovies: Response = msg.obj as Response
                         Log.d(TAG, "handleMessage: $listOfMovies")
-                        var list = mutableListOf<String>()
-                        for(index in 0 until listOfMovies.size){
-                            list.add(index,listOfMovies[index].title)
-                        }
-                        rvMovieList.adapter = MovieAdapter(list)
+                        rvMovieList.adapter = MovieAdapter(listOfMovies)
 
                     }
                     else -> {
                         msg.data?.getString("KEY")?.let {
-                            Toast.makeText(this@MainActivity,
-                                it, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity,  it, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

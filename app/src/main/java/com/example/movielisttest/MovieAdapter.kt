@@ -1,8 +1,8 @@
 package com.example.movielisttest
 
 import android.graphics.Color
-import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielisttest.model.Response
@@ -26,8 +26,15 @@ class MovieAdapter(private val dataSet: Response): RecyclerView.Adapter<MovieVie
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         if (position % 2 == 0) holder.itemView.setBackgroundColor(Color.LTGRAY)
         holder.tvMovieTitle.text = dataSet[position].title
-        holder.ivImage.setBackgroundColor(Color.CYAN)
-        Picasso.get().load(dataSet[position].image).into(holder.ivImage);
+        //Picasso.get().load(dataSet[position].image).into(holder.ivImage)
+        com.squareup.picasso3.Picasso.Builder(holder.itemView.context).build().load(dataSet[position].image).into(holder.ivImage)
+        holder.rbRating.rating = dataSet[position].rating
+        holder.tvGenre.text = dataSet[position].genre.toString()
+        holder.tvYear.text = dataSet[position].releaseYear.toString()
+
+        holder.ibShowDetails.setOnClickListener {
+            holder.wgMovieGroup.visibility = View.VISIBLE
+        }
 
     }
 

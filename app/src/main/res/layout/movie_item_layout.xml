@@ -4,23 +4,83 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="20dp">
-    <androidx.appcompat.widget.LinearLayoutCompat
+    app:cardCornerRadius="20dp"
+    android:layout_margin="5dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        >
+        <TextView
+            android:id="@+id/tv_movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding= "10dp"
+            android:layout_margin="10dp"
+            tools:text="example test not visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_genre"
+            app:layout_constraintTop_toBottomOf="@+id/tv_movie_title"
+            tools:src="@drawable/ic_launcher_background"
+            />
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tv_year,tv_genre,rb_rating"
+            android:visibility="gone"
+            android:id="@+id/show_details"
+            />
+        <RatingBar
+            android:id="@+id/rb_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            app:layout_constraintBottom_toTopOf="@id/tv_genre"
+            app:layout_constraintTop_toBottomOf="@id/iv_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
         <TextView
-            android:id="@+id/tv_movie_title"
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding= "10dp"
+            android:layout_margin="10dp"
+            tools:text="2022 some month"
+            app:layout_constraintBottom_toTopOf="@id/rb_rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <TextView
+            android:id="@+id/tv_genre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding= "10dp"
             android:layout_margin="10dp"
             tools:text="example test not visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/ib_showDetails"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:layout_gravity="center|bottom"
+        />
 </androidx.cardview.widget.CardView>

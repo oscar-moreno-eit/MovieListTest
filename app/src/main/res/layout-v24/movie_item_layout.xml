@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_marginHorizontal="32dp"
+    android:layout_marginTop="32dp"
+    android:paddingBottom="-40dp"
+    app:cardCornerRadius="20dp"
     android:forceHasOverlappingRendering="true"
-    app:cardCornerRadius="20dp">
+    >
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center">
+        android:layout_height="match_parent"
+        android:layout_margin="40dp"
+        android:id="@+id/cv_container"
+
+        >
 
         <TextView
             android:id="@+id/tv_movie_title"
@@ -73,13 +80,17 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="example test not visible" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageButton
         android:id="@+id/ib_showDetails"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center|bottom"
-        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="-10dp"
+        android:layout_height="-57dp"
+        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:elevation="15dp"
+        android:layout_gravity="bottom|center"
+        />
+
 </androidx.cardview.widget.CardView>

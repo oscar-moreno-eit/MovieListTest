@@ -1,14 +1,12 @@
 package com.example.movielisttest
 
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielisttest.model.Response
 import com.squareup.picasso3.Picasso
-import com.squareup.picasso3.RequestHandler
 
 class MovieAdapter(private val dataSet: Response): RecyclerView.Adapter<MovieViewHolder>() {
     /**

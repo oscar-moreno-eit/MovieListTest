@@ -24,7 +24,7 @@ class MovieAdapter(private val dataSet: Response): RecyclerView.Adapter<MovieVie
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        if (position % 2 == 0) holder.itemView.setBackgroundColor(Color.LTGRAY)
+        if (position % 2 == 0) holder.itemView.setBackgroundColor(Color.rgb(129,179,223))
         holder.tvMovieTitle.text = dataSet[position].title
         //Picasso.get().load(dataSet[position].image).into(holder.ivImage)
         com.squareup.picasso3.Picasso.Builder(holder.itemView.context).build().load(dataSet[position].image).into(holder.ivImage)

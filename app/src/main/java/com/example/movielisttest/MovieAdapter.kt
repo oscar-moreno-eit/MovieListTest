@@ -1,12 +1,14 @@
 package com.example.movielisttest
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielisttest.model.Response
-import com.squareup.picasso.Picasso
+import com.squareup.picasso3.Picasso
+import com.squareup.picasso3.RequestHandler
 
 class MovieAdapter(private val dataSet: Response): RecyclerView.Adapter<MovieViewHolder>() {
     /**
@@ -27,13 +29,24 @@ class MovieAdapter(private val dataSet: Response): RecyclerView.Adapter<MovieVie
         if (position % 2 == 0) holder.itemView.setBackgroundColor(Color.rgb(129,179,223))
         holder.tvMovieTitle.text = dataSet[position].title
         //Picasso.get().load(dataSet[position].image).into(holder.ivImage)
-        com.squareup.picasso3.Picasso.Builder(holder.itemView.context).build().load(dataSet[position].image).into(holder.ivImage)
+        Picasso.Builder(holder.itemView.context).build().load(dataSet[position].image).into(holder.ivImage)
         holder.rbRating.rating = dataSet[position].rating
         holder.tvGenre.text = dataSet[position].genre.toString()
         holder.tvYear.text = dataSet[position].releaseYear.toString()
-
         holder.ibShowDetails.setOnClickListener {
-            holder.wgMovieGroup.visibility = View.VISIBLE
+            holder.ibShowDetails.background = null
+
+            if (holder.wgMovieGroup.visibility == View.VISIBLE ){
+                holder.wgMovieGroup.visibility = View.GONE
+                /* Note: You can set a background color and an image resource at the same time but you  cannot set one background color neither a background image at the same time */
+                holder.ibShowDetails.setBackgroundColor(Color.LTGRAY)
+                holder.ibShowDetails.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+            }
+            else {
+                holder.wgMovieGroup.visibility = View.VISIBLE
+                holder.ibShowDetails.setBackgroundColor(Color.LTGRAY)
+                holder.ibShowDetails.setImageResource( R.drawable.ic_baseline_keyboard_arrow_up_24)
+            }
         }
 
     }
